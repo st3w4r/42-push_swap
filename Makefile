@@ -20,9 +20,9 @@ CFLAGS = -Wall -Wextra -Werror -Wpadded -Ofast -I $(PATH_INC)
 # CFLAGS = -Ofast -I $(PATH_INC) -g
 LIBS = -L libft/ -lft
 
-HEAD = $(PATH_SRC)ft_sh1.h
+HEAD = $(PATH_SRC)push_swap.h
 
-SRC =	main.c
+SRC =	main.c 
 
 OBJ = $(addprefix $(PATH_SRC), $(SRC:.c=.o))
 
