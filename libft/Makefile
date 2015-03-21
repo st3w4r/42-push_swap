@@ -45,7 +45,8 @@ SRC = 	$(PATH_SRC)ft_strlen.c \
 	  	$(PATH_SRC)ft_strncmp.c \
 	  	$(PATH_SRC)ft_strnstr.c\
 		$(PATH_SRC)ft_strreplace_char.c\
-	  	$(PATH_SRC)ft_atoi.c \
+		$(PATH_SRC)ft_atoi.c \
+	  	$(PATH_SRC)ft_atol.c \
 	  	$(PATH_SRC)ft_memalloc.c \
 	  	$(PATH_SRC)ft_memdel.c \
 	  	$(PATH_SRC)ft_strnew.c \

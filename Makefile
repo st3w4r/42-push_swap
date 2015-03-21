@@ -15,14 +15,16 @@ PATH_SRC = ./src/
 PATH_OBJ = ./
 PATH_INC = ./libft/includes/
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Wpadded -Ofast -I $(PATH_INC)
-# CFLAGS = -Ofast -I $(PATH_INC) -g
+CC = cc
+# CFLAGS = -Wall -Wextra -Werror -Wpadded -Ofast -I $(PATH_INC)
+CFLAGS = -Ofast -I $(PATH_INC) -g
 LIBS = -L libft/ -lft
 
 HEAD = $(PATH_SRC)push_swap.h
 
-SRC =	main.c 
+SRC =	main.c \
+		ps_parse.c \
+		ft_error.c
 
 OBJ = $(addprefix $(PATH_SRC), $(SRC:.c=.o))
 
