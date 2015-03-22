@@ -43,6 +43,9 @@ int			main(int argc, char **argv)
 	if (argc > 1)
 	{
 		env.flags = 0;
+		env.stack_a = NULL;
+		env.stack_b = NULL;
+
 		pos_args = ps_parse_flags(&env, argc, argv);
 
 		if (env.flags & FLAGS_V)
@@ -50,9 +53,10 @@ int			main(int argc, char **argv)
 		if (env.flags & FLAGS_C)
 			ft_putendl("Flag -c Active");
 
-		ps_parse(argc - pos_args, &(argv[pos_args]));
+		ps_parse(&env, argc - pos_args, &(argv[pos_args]));
+
 	}
 	else
-		ft_error_str_exit("Need arguments.\n");
+		ft_error_str_exit("usage: push_swap [-cv] [int_value ...]\n");
 	return (0);
 }
