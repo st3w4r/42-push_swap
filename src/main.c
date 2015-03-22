@@ -12,7 +12,15 @@
 
 #include "push_swap.h"
 
-int		ps_parse_flags(t_env *env, int nb_args, char **args)
+static void	ps_parse_flags_one_arg(t_env *env, char *str)
+{
+	if (ft_strchr(str, 'c') != NULL)
+		env->flags |= FLAGS_C;
+	if (ft_strchr(str, 'v') != NULL)
+		env->flags |= FLAGS_V;
+}
+
+static int	ps_parse_flags(t_env *env, int nb_args, char **args)
 {
 	int i;
 
@@ -21,16 +29,13 @@ int		ps_parse_flags(t_env *env, int nb_args, char **args)
 	{
 		if (args[i][1] && ft_isdigit(args[i][1]) == 1)
 			break ;
-		if (ft_strcmp("-v", args[i]) == 0)
-			env->flags |= FLAGS_V;
-		if (ft_strcmp("-c", args[i]) == 0)
-			env->flags |= FLAGS_C;
+		ps_parse_flags_one_arg(env, args[i]);
 		++i;
 	}
 	return (i);
 }
 
-int		main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	t_env	env;
 	int		pos_args;
