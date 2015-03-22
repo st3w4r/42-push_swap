@@ -29,7 +29,7 @@ enum	e_flags
 typedef struct		s_stack
 {
 	int				nbr;
-	struct s_stack	*next;
+	struct s_stack	*down;
 }					t_stack;
 
 typedef struct		s_env
@@ -45,6 +45,14 @@ typedef struct		s_env
 ** Desc: All functions parsing args
 */
 void				ps_parse(t_env *env, int nb_args, char **argv);
+
+/*
+** Name: ft_error
+** File: ft_error.c
+** Desc: Error Gestion
+*/
+void	ps_stack_push(t_stack **stack, t_stack *elem);
+
 
 /*
 ** Name: ft_error

@@ -29,10 +29,5 @@ void ft_putnbr(int n)
 		ft_putchar((nb % 10) + '0');
 	}
 	else
-	{
-		if (n > 0)
-			ft_putchar(nb + '0');
-		else
-			ft_putchar(-nb + '0');
-	}
+		ft_putchar(nb + '0');
 }

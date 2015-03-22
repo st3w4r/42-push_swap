@@ -51,7 +51,7 @@ int		ps_parse_check_number_duplicate(t_stack *stack, int nbr)
 		{
 			return (1);
 		}
-		stack = stack->next;
+		stack = stack->down;
 	}
 	return (0);
 }
@@ -59,13 +59,16 @@ int		ps_parse_check_number_duplicate(t_stack *stack, int nbr)
 
 void	ps_parse_add_to_stack(t_env *env, int nbr)
 {
-	t_stack *stack;
+	t_stack *elem;
 
-	stack = NULL;
-	stack = (t_stack*)(malloc(sizeof(t_stack)));
-	stack->nbr = nbr;
-	stack->next = env->stack_a;
-	env->stack_a = stack;
+	elem = NULL;
+	elem = (t_stack*)(malloc(sizeof(t_stack)));
+	elem->nbr = nbr;
+
+	ps_stack_push(&(env->stack_a), elem);
+
+	// stack->down = env->stack_a;
+	// env->stack_a = stack;
 }
 
 void	ps_print_stack (t_stack *stack)
@@ -74,19 +77,19 @@ void	ps_print_stack (t_stack *stack)
 	{
 		ft_putnbr(stack->nbr);
 		ft_putendl("");
-		stack = stack->next;
+		stack = stack->down;
 	}
 }
 
 void	ps_parse(t_env *env, int nb_args, char **args)
 {
-	int		i;
+	// int		i;
 	long	nbr_parse;
 
-	i = 0;
-	while (i < nb_args)
+	// i = nb_args;
+	while (nb_args >= 0)
 	{
-		nbr_parse = ps_atol_nbr(args[i]);
+		nbr_parse = ps_atol_nbr(args[nb_args]);
 		if (nbr_parse > 2147483647 || nbr_parse < -2147483648)
 			ft_error_str_exit("Just Integer value supported.\n");
 
@@ -95,7 +98,7 @@ void	ps_parse(t_env *env, int nb_args, char **args)
 
 		ps_parse_add_to_stack(env, (int)nbr_parse);
 
-		++i;
+		--nb_args;
 	}
 		ps_print_stack(env->stack_a);
 		ft_putendl("");
