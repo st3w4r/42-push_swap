@@ -13,11 +13,11 @@
 #include "push_swap.h"
 
 /*
-** Name: pa
-** Desc: push a - prend le premier élément au sommet de b et le met sur a.
-** (ne fait rien si b est vide).
+** Name: ra
+** Desc: rotate a - décale d’une position tous les élements de la pile a.
+** (vers le haut, le premier élément devient le dernier).
 */
 void	ps_operator_rotate(t_env *env, int is_print)
 {
-	
+
 }
