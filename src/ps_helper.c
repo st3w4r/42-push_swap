@@ -21,3 +21,14 @@ void	ps_print_stack(t_stack *stack)
 		stack = stack->down;
 	}
 }
+
+int		ps_stack_is_sorted(t_stack *stack)
+{
+	while (stack->down)
+	{
+		if ((stack->nbr) > (stack->down->nbr))
+			return (0);
+		stack = stack->down;
+	}
+	return (1);
+}

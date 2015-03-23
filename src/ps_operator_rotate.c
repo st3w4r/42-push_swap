@@ -45,7 +45,7 @@ void	ps_operator_rb(t_env *env, int is_print)
 	env->stack_b = elem_tmp->down;
 	elem_tmp->down = NULL;
 	if (is_print)
-		ft_putendl("ra");
+		ft_putendl("rb");
 }
 
 void	ps_operator_rr(t_env *env, int is_print)

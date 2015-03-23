@@ -96,7 +96,7 @@ void	ps_operator_rrr(t_env *env, int is_print);
 ** Desc: Functions simply program
 */
 void		ps_print_stack(t_stack *stack);
-
+int			ps_stack_is_sorted(t_stack *stack);
 
 /*
 ** Name: ps_stack
