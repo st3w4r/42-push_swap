@@ -24,7 +24,10 @@ HEAD = $(PATH_SRC)push_swap.h
 
 SRC =	main.c \
 		ps_parse.c \
+		ps_helper.c \
 		ps_stack.c \
+		ps_operator_swap.c \
+		ps_operator_push.c \
 		ft_error.c
 
 OBJ = $(addprefix $(PATH_SRC), $(SRC:.c=.o))

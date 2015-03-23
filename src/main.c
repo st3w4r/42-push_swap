@@ -67,10 +67,27 @@ int			main(int argc, char **argv)
 
 		ps_parse(&env, argc - pos_args, &(argv[pos_args]));
 
-		ps_operator_ss(&env, print);
-		ps_operator_sa(&env, print);
+		// ps_operator_ss(&env, print);
+		// ps_operator_sa(&env, print);
 
+ft_putendl("Stack a");
 		ps_print_stack(env.stack_a);
+ft_putendl("Stack b");
+		ps_print_stack(env.stack_b);
+
+ft_putendl("");
+ps_operator_pb(&env, print);
+ps_operator_pb(&env, print);
+ps_operator_pb(&env, print);
+// ps_operator_pa(&env, print);
+// ps_stack_pop(&(env->stack_a))
+ft_putendl("");
+
+ft_putendl("Stack a");
+		ps_print_stack(env.stack_a);
+ft_putendl("Stack b");
+		ps_print_stack(env.stack_b);
+
 
 	}
 	else

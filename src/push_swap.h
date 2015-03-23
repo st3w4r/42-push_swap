@@ -57,6 +57,22 @@ void		ps_operator_sb(t_env *env, int is_print);
 void		ps_operator_ss(t_env *env, int is_print);
 
 /*
+** Name: ps_operator_push
+** File: ps_operator_push.c
+** Desc: All functions to push elem on stack
+*/
+void		ps_operator_pa(t_env *env, int is_print);
+void		ps_operator_pb(t_env *env, int is_print);
+
+/*
+** Name: ps_operator_rotate
+** File: ps_operator_rotate.c
+** Desc: All functions to rotate stack
+*/
+void	ps_operator_rotate(t_env *env, int is_print);
+
+
+/*
 ** Name: ps_helper
 ** File: ps_helper.c
 ** Desc: Functions simply program
