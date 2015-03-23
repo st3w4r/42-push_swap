@@ -27,6 +27,7 @@ static int	ps_parse_flags(t_env *env, int nb_args, char **args)
 	i = 1;
 	while (i < nb_args && ft_strncmp("-", args[i], 1) == 0)
 	{
+
 		if (args[i][1] && ft_isdigit(args[i][1]) == 1)
 			break ;
 		ps_parse_flags_one_arg(env, args[i]);

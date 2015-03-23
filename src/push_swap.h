@@ -51,7 +51,11 @@ void				ps_parse(t_env *env, int nb_args, char **argv);
 ** File: ft_error.c
 ** Desc: Error Gestion
 */
-void	ps_stack_push(t_stack **stack, t_stack *elem);
+void		ps_stack_push(t_stack **stack, t_stack *elem);
+t_stack		*ps_stack_pop(t_stack **stack);
+int			ps_stack_empty(t_stack **stack);
+t_stack		*ps_stack_peek(t_stack **stack);
+void		ps_stack_swap_top(t_stack **stack);
 
 
 /*

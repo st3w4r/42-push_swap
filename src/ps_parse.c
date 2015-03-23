@@ -83,10 +83,9 @@ void	ps_print_stack (t_stack *stack)
 
 void	ps_parse(t_env *env, int nb_args, char **args)
 {
-	// int		i;
 	long	nbr_parse;
 
-	// i = nb_args;
+	nb_args -= 1;
 	while (nb_args >= 0)
 	{
 		nbr_parse = ps_atol_nbr(args[nb_args]);
@@ -100,6 +99,19 @@ void	ps_parse(t_env *env, int nb_args, char **args)
 
 		--nb_args;
 	}
+
+	// ps_stack_pop(&(env->stack_a));
+	// ps_stack_pop(&(env->stack_a));
+	// ps_stack_pop(&(env->stack_a));
+	// ps_stack_pop(&(env->stack_a));
+	ps_parse_add_to_stack(env, 42);
+	ps_stack_swap_top(&(env->stack_a));
+	ft_putnbr(ps_stack_peek(&(env->stack_a))->nbr);
+	ft_putendl("<<");
+
+	// ft_putnbr(ps_stack_empty(NULL));
+	// ft_putendl("<<");
+
 		ps_print_stack(env->stack_a);
 		ft_putendl("");
 }
