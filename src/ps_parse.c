@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-long	ps_atol_nbr(const char *str)
+static long		ps_atol_nbr(const char *str)
 {
 	long result;
 	long negatif;
@@ -43,7 +43,7 @@ long	ps_atol_nbr(const char *str)
 	return (negatif ? -result : result);
 }
 
-int		ps_parse_check_number_duplicate(t_stack *stack, int nbr)
+static int		ps_parse_check_number_duplicate(t_stack *stack, int nbr)
 {
 	while (stack)
 	{
@@ -57,7 +57,7 @@ int		ps_parse_check_number_duplicate(t_stack *stack, int nbr)
 }
 
 
-void	ps_parse_add_to_stack(t_env *env, int nbr)
+static void		ps_parse_add_to_stack(t_env *env, int nbr)
 {
 	t_stack *elem;
 
@@ -67,7 +67,7 @@ void	ps_parse_add_to_stack(t_env *env, int nbr)
 	ps_stack_push(&(env->stack_a), elem);
 }
 
-void	ps_parse(t_env *env, int nb_args, char **args)
+void			ps_parse(t_env *env, int nb_args, char **args)
 {
 	long	nbr_parse;
 

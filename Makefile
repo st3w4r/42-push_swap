@@ -26,6 +26,7 @@ SRC =	main.c \
 		ps_parse.c \
 		ps_helper.c \
 		ps_stack.c \
+		ps_algo.c \
 		ps_operator_swap.c \
 		ps_operator_push.c \
 		ps_operator_rotate.c \

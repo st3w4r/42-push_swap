@@ -91,6 +91,13 @@ void	ps_operator_rrb(t_env *env, int is_print);
 void	ps_operator_rrr(t_env *env, int is_print);
 
 /*
+** Name: ps_algo
+** File: ps_algo.c
+** Desc: Algortihme to sort stack
+*/
+void	ps_algo_sort(t_env *env);
+
+/*
 ** Name: ps_helper
 ** File: ps_helper.c
 ** Desc: Functions simply program

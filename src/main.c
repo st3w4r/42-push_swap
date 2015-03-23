@@ -67,8 +67,7 @@ int			main(int argc, char **argv)
 
 		ps_parse(&env, argc - pos_args, &(argv[pos_args]));
 
-		// ps_operator_ss(&env, print);
-		// ps_operator_sa(&env, print);
+
 
 		ft_putendl("Is Sorted");
 		ft_putnbr(ps_stack_is_sorted(env.stack_a));
@@ -92,33 +91,6 @@ ps_operator_pa(&env, print);
 ps_operator_pa(&env, print);
 ps_operator_pa(&env, print);
 
-
-// ps_operator_ra(&env, print);
-// ps_operator_pb(&env, print);
-// ps_operator_pb(&env, print);
-// ps_operator_pb(&env, print);
-// ps_operator_pb(&env, print);
-
-// ps_operator_ra(&env, print);
-// ps_operator_rrb(&env, print);
-// env.stack_b = NULL;
-/*ps_operator_pa(&env, print);
-ps_operator_pb(&env, print);
-ps_operator_sa(&env, print);
-ps_operator_sb(&env, print);
-ps_operator_ss(&env, print);
-ps_operator_ra(&env, print);
-ps_operator_rb(&env, print);
-ps_operator_rr(&env, print);
-ps_operator_rra(&env, print);
-ps_operator_rrb(&env, print);
-ps_operator_rrr(&env, print);*/
-// ps_operator_pa(&env, print);
-// ps_operator_rra(&env, print);
-// ps_operator_rrr(&env, print);
-
-// ps_operator_pa(&env, print);
-// ps_stack_pop(&(env->stack_a))
 ft_putendl("");
 
 ft_putendl("Stack a");
