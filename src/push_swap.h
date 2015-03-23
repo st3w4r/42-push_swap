@@ -23,7 +23,8 @@
 enum	e_flags
 {
 	FLAGS_V = 1 << 0,
-	FLAGS_C = 1 << 1
+	FLAGS_C = 1 << 1,
+	FLAGS_M = 1 << 2
 };
 
 typedef struct		s_stack
@@ -47,9 +48,26 @@ typedef struct		s_env
 void				ps_parse(t_env *env, int nb_args, char **argv);
 
 /*
-** Name: ft_error
-** File: ft_error.c
-** Desc: Error Gestion
+** Name: ps_operator_swap
+** File: ps_operator_swap.c
+** Desc: All functions to swap elem on stack
+*/
+void		ps_operator_sa(t_env *env, int is_print);
+void		ps_operator_sb(t_env *env, int is_print);
+void		ps_operator_ss(t_env *env, int is_print);
+
+/*
+** Name: ps_helper
+** File: ps_helper.c
+** Desc: Functions simply program
+*/
+void		ps_print_stack(t_stack *stack);
+
+
+/*
+** Name: ps_stack
+** File: ps_stack.c
+** Desc: Base operator of stack
 */
 void		ps_stack_push(t_stack **stack, t_stack *elem);
 t_stack		*ps_stack_pop(t_stack **stack);

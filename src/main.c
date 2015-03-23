@@ -12,12 +12,19 @@
 
 #include "push_swap.h"
 
+static void	ps_error_usage(void)
+{
+	ft_error_str_exit("usage: push_swap [-cvm] [int_value ...]\n");
+}
+
 static void	ps_parse_flags_one_arg(t_env *env, char *str)
 {
 	if (ft_strchr(str, 'c') != NULL)
 		env->flags |= FLAGS_C;
 	if (ft_strchr(str, 'v') != NULL)
 		env->flags |= FLAGS_V;
+	if (ft_strchr(str, 'm') != NULL)
+		env->flags |= FLAGS_M;
 }
 
 static int	ps_parse_flags(t_env *env, int nb_args, char **args)
@@ -40,9 +47,11 @@ int			main(int argc, char **argv)
 {
 	t_env	env;
 	int		pos_args;
+	int		print;
 
 	if (argc > 1)
 	{
+		print = 1;
 		env.flags = 0;
 		env.stack_a = NULL;
 		env.stack_b = NULL;
@@ -53,11 +62,18 @@ int			main(int argc, char **argv)
 			ft_putendl("Flag -v Active");
 		if (env.flags & FLAGS_C)
 			ft_putendl("Flag -c Active");
+		if (env.flags & FLAGS_M)
+			print = 0;
 
 		ps_parse(&env, argc - pos_args, &(argv[pos_args]));
 
+		ps_operator_ss(&env, print);
+		ps_operator_sa(&env, print);
+
+		ps_print_stack(env.stack_a);
+
 	}
 	else
-		ft_error_str_exit("usage: push_swap [-cv] [int_value ...]\n");
+		ps_error_usage();
 	return (0);
 }
