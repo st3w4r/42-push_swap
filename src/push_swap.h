@@ -51,6 +51,8 @@ void				ps_parse(t_env *env, int nb_args, char **argv);
 ** Name: ps_operator_swap
 ** File: ps_operator_swap.c
 ** Desc: All functions to swap elem on stack
+** swap a - intervertit les 2 premiers éléments au sommet de la pile a.
+** (ne fait rien s’il n’y en a qu’un ou aucun).
 */
 void		ps_operator_sa(t_env *env, int is_print);
 void		ps_operator_sb(t_env *env, int is_print);
@@ -60,6 +62,8 @@ void		ps_operator_ss(t_env *env, int is_print);
 ** Name: ps_operator_push
 ** File: ps_operator_push.c
 ** Desc: All functions to push elem on stack
+** push b - prend le premier élément au sommet de a et le met sur b.
+** (ne fait rien si b est vide).
 */
 void		ps_operator_pa(t_env *env, int is_print);
 void		ps_operator_pb(t_env *env, int is_print);
@@ -68,6 +72,8 @@ void		ps_operator_pb(t_env *env, int is_print);
 ** Name: ps_operator_rotate
 ** File: ps_operator_rotate.c
 ** Desc: All functions to rotate stack UP
+** rotate a - décale d’une position tous les élements de la pile a.
+** (vers le haut, le premier élément devient le dernier).
 */
 void	ps_operator_ra(t_env *env, int is_print);
 void	ps_operator_rb(t_env *env, int is_print);
@@ -77,6 +83,8 @@ void	ps_operator_rr(t_env *env, int is_print);
 ** Name: ps_operator_reverse
 ** File: ps_operator_reverse.c
 ** Desc: All functions to rotate stack DOWN
+** reverse rotate a - décale d’une position tous les élements de la pile a.
+** (vers le bas, le dernier élément devient le premier)..
 */
 void	ps_operator_rra(t_env *env, int is_print);
 void	ps_operator_rrb(t_env *env, int is_print);

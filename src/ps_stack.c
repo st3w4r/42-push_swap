@@ -51,8 +51,8 @@ void	ps_stack_swap_top(t_stack **stack)
 
 	if (!stack || !(*stack))
 		return ;
-	ptr_tmp = (*stack)->down; // Save Ptr b
-	(*stack)->down = (*stack)->down->down; // Change ptr down de a avec ptr down de b
-	ptr_tmp->down = *stack; // Change le ptr down de b avec le ptr sur a
-	*stack = ptr_tmp; // Change le ptr TOP avec le ptr sur b
+	ptr_tmp = (*stack)->down;
+	(*stack)->down = (*stack)->down->down;
+	ptr_tmp->down = *stack;
+	*stack = ptr_tmp;
 }

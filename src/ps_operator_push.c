@@ -12,11 +12,6 @@
 
 #include "push_swap.h"
 
-/*
-** Name: pa
-** Desc: push a - prend le premier élément au sommet de b et le met sur a.
-** (ne fait rien si b est vide).
-*/
 void	ps_operator_pa(t_env *env, int is_print)
 {
 	t_stack *elem;
@@ -30,11 +25,6 @@ void	ps_operator_pa(t_env *env, int is_print)
 		ft_putendl("pa");
 }
 
-/*
-** Name: pb
-** Desc: push b - prend le premier élément au sommet de a et le met sur b.
-** (ne fait rien si b est vide).
-*/
 void	ps_operator_pb(t_env *env, int is_print)
 {
 	t_stack *elem;

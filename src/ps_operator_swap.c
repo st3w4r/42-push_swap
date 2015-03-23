@@ -12,11 +12,6 @@
 
 #include "push_swap.h"
 
-/*
-** Name: sa
-** Desc:  swap a - intervertit les 2 premiers éléments au sommet de la pile a.
-** (ne fait rien s’il n’y en a qu’un ou aucun).
-*/
 void	ps_operator_sa(t_env *env, int is_print)
 {
 	if (!env || !(env->stack_a) || !(env->stack_a->down))
@@ -26,11 +21,6 @@ void	ps_operator_sa(t_env *env, int is_print)
 		ft_putendl("sa");
 }
 
-/*
-** Name: sb
-** Desc:  swap b - intervertit les 2 premiers éléments au sommet de la pile b.
-** (ne fait rien s’il n’y en a qu’un ou aucun).
-*/
 void	ps_operator_sb(t_env *env, int is_print)
 {
 	if (!env || !(env->stack_b) || !(env->stack_b->down))
@@ -40,10 +30,6 @@ void	ps_operator_sb(t_env *env, int is_print)
 		ft_putendl("sb");
 }
 
-/*
-** Name: ss
-** Desc:  swap a et swap b - sa et sb en même temps
-*/
 void	ps_operator_ss(t_env *env, int is_print)
 {
 	if (!env || !(env->stack_a) || !(env->stack_b))
