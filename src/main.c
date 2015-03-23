@@ -76,9 +76,14 @@ ft_putendl("Stack b");
 		ps_print_stack(env.stack_b);
 
 ft_putendl("");
+
+// ps_operator_ra(&env, print);
 ps_operator_pb(&env, print);
 ps_operator_pb(&env, print);
-ps_operator_pb(&env, print);
+// ps_operator_pb(&env, print);
+
+ps_operator_rr(&env, print);
+
 // ps_operator_pa(&env, print);
 // ps_stack_pop(&(env->stack_a))
 ft_putendl("");

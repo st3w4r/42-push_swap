@@ -45,5 +45,5 @@ void	ps_operator_pb(t_env *env, int is_print)
 	elem = ps_stack_pop(&(env->stack_a));
 	ps_stack_push(&(env->stack_b), elem);
 	if (is_print)
-		ft_putendl("pa");
+		ft_putendl("pb");
 }
