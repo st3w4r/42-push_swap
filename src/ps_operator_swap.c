@@ -19,7 +19,7 @@
 */
 void	ps_operator_sa(t_env *env, int is_print)
 {
-	if (!(env->stack_a) || !(env->stack_a->down))
+	if (!env || !(env->stack_a) || !(env->stack_a->down))
 		return ;
 	ps_stack_swap_top(&(env->stack_a));
 	if (is_print)
@@ -33,7 +33,7 @@ void	ps_operator_sa(t_env *env, int is_print)
 */
 void	ps_operator_sb(t_env *env, int is_print)
 {
-	if (!(env->stack_b) || !(env->stack_b->down))
+	if (!env || !(env->stack_b) || !(env->stack_b->down))
 		return ;
 	ps_stack_swap_top(&(env->stack_b));
 	if (is_print)
@@ -46,6 +46,8 @@ void	ps_operator_sb(t_env *env, int is_print)
 */
 void	ps_operator_ss(t_env *env, int is_print)
 {
+	if (!env || !(env->stack_a) || !(env->stack_b))
+		return ;
 	ps_operator_sa(env, 0);
 	ps_operator_sb(env, 0);
 	if (is_print)

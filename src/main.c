@@ -78,11 +78,16 @@ ft_putendl("Stack b");
 ft_putendl("");
 
 // ps_operator_ra(&env, print);
-ps_operator_pb(&env, print);
-ps_operator_pb(&env, print);
+// ps_operator_pb(&env, print);
+// ps_operator_pb(&env, print);
+// ps_operator_pb(&env, print);
 // ps_operator_pb(&env, print);
 
-ps_operator_rr(&env, print);
+// ps_operator_ra(&env, print);
+// ps_operator_rrb(&env, print);
+ps_operator_rra(&env, print);
+ps_operator_rra(&env, print);
+// ps_operator_rrr(&env, print);
 
 // ps_operator_pa(&env, print);
 // ps_stack_pop(&(env->stack_a))

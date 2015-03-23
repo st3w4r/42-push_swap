@@ -67,11 +67,20 @@ void		ps_operator_pb(t_env *env, int is_print);
 /*
 ** Name: ps_operator_rotate
 ** File: ps_operator_rotate.c
-** Desc: All functions to rotate stack
+** Desc: All functions to rotate stack UP
 */
 void	ps_operator_ra(t_env *env, int is_print);
 void	ps_operator_rb(t_env *env, int is_print);
 void	ps_operator_rr(t_env *env, int is_print);
+
+/*
+** Name: ps_operator_reverse
+** File: ps_operator_reverse.c
+** Desc: All functions to rotate stack DOWN
+*/
+void	ps_operator_rra(t_env *env, int is_print);
+void	ps_operator_rrb(t_env *env, int is_print);
+void	ps_operator_rrr(t_env *env, int is_print);
 
 /*
 ** Name: ps_helper

@@ -29,6 +29,7 @@ SRC =	main.c \
 		ps_operator_swap.c \
 		ps_operator_push.c \
 		ps_operator_rotate.c \
+		ps_operator_reverse.c \
 		ft_error.c
 
 OBJ = $(addprefix $(PATH_SRC), $(SRC:.c=.o))

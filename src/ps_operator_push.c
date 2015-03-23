@@ -22,7 +22,7 @@ void	ps_operator_pa(t_env *env, int is_print)
 	t_stack *elem;
 
 	elem = NULL;
-	if (!(env->stack_b))
+	if (!env || !(env->stack_b))
 		return ;
 	elem = ps_stack_pop(&(env->stack_b));
 	ps_stack_push(&(env->stack_a), elem);
@@ -40,7 +40,7 @@ void	ps_operator_pb(t_env *env, int is_print)
 	t_stack *elem;
 
 	elem = NULL;
-	if (!(env->stack_a))
+	if (!env || !(env->stack_a))
 		return ;
 	elem = ps_stack_pop(&(env->stack_a));
 	ps_stack_push(&(env->stack_b), elem);
