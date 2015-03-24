@@ -22,6 +22,24 @@ void	ps_print_stack(t_stack *stack)
 	}
 }
 
+void	ps_print_operation(t_env *env, char *str)
+{
+	if (!(env->flags & FLAGS_M))
+	{
+		if (env->nb_ops != 0)
+			ft_putstr(" ");
+		ft_putstr(str);
+	}
+	env->nb_ops += 1;
+}
+
+int		ps_cmp_int(int nb1, int nb2)
+{
+	if (nb1 > nb2)
+		return (1);
+	return (0);
+}
+
 int		ps_stack_is_sorted(t_stack *stack)
 {
 	while (stack->down)

@@ -38,6 +38,16 @@ int		ps_stack_empty(t_stack **stack)
 	return (0);
 }
 
+int		ps_stack_size(t_stack *stack)
+{
+	int count;
+
+	count = 0;
+	while (stack)
+		stack = stack->down, ++count;
+	return (count);
+}
+
 t_stack	*ps_stack_peek(t_stack **stack)
 {
 	if (!stack || !(*stack))

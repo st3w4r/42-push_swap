@@ -53,6 +53,7 @@ int			main(int argc, char **argv)
 	{
 		print = 1;
 		env.flags = 0;
+		env.nb_ops = 0;
 		env.stack_a = NULL;
 		env.stack_b = NULL;
 
@@ -68,38 +69,45 @@ int			main(int argc, char **argv)
 		ps_parse(&env, argc - pos_args, &(argv[pos_args]));
 
 
+		ft_putendl("Stack a");
+				ps_print_stack(env.stack_a);
 
+		ps_algo_sort(&env);
+
+// 		ft_putendl("Is Sorted");
+// 		ft_putnbr(ps_stack_is_sorted(env.stack_a));
+// 		ft_putendl("");
+//
+// ft_putendl("Stack a");
+// 		ps_print_stack(env.stack_a);
+// ft_putendl("Stack b");
+// 		ps_print_stack(env.stack_b);
+//
+// ft_putendl("");
+//
+//
+//
+// ps_operator_sa(&env, print);
+// ps_operator_pb(&env, print);
+// ps_operator_pb(&env, print);
+// ps_operator_pb(&env, print);
+// ps_operator_sa(&env, print);
+// ps_operator_pa(&env, print);
+// ps_operator_pa(&env, print);
+// ps_operator_pa(&env, print);
+//
+ft_putendl("");
+ft_putendl("Stack a");
+		ps_print_stack(env.stack_a);
+// ft_putendl("Stack b");
+		// ps_print_stack(env.stack_b);
+//
 		ft_putendl("Is Sorted");
 		ft_putnbr(ps_stack_is_sorted(env.stack_a));
 		ft_putendl("");
 
-ft_putendl("Stack a");
-		ps_print_stack(env.stack_a);
-ft_putendl("Stack b");
-		ps_print_stack(env.stack_b);
-
-ft_putendl("");
-
-
-
-ps_operator_sa(&env, print);
-ps_operator_pb(&env, print);
-ps_operator_pb(&env, print);
-ps_operator_pb(&env, print);
-ps_operator_sa(&env, print);
-ps_operator_pa(&env, print);
-ps_operator_pa(&env, print);
-ps_operator_pa(&env, print);
-
-ft_putendl("");
-
-ft_putendl("Stack a");
-		ps_print_stack(env.stack_a);
-ft_putendl("Stack b");
-		ps_print_stack(env.stack_b);
-
-		ft_putendl("Is Sorted");
-		ft_putnbr(ps_stack_is_sorted(env.stack_a));
+		ft_putendl("Nombre d'ops");
+		ft_putnbr(env.nb_ops);
 		ft_putendl("");
 
 

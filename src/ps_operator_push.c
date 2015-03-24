@@ -22,7 +22,7 @@ void	ps_operator_pa(t_env *env, int is_print)
 	elem = ps_stack_pop(&(env->stack_b));
 	ps_stack_push(&(env->stack_a), elem);
 	if (is_print)
-		ft_putendl("pa");
+		ps_print_operation(env, "pa");
 }
 
 void	ps_operator_pb(t_env *env, int is_print)
@@ -35,5 +35,6 @@ void	ps_operator_pb(t_env *env, int is_print)
 	elem = ps_stack_pop(&(env->stack_a));
 	ps_stack_push(&(env->stack_b), elem);
 	if (is_print)
-		ft_putendl("pb");
+		ps_print_operation(env, "pb");
+
 }
