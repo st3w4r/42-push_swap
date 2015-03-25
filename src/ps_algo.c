@@ -81,6 +81,25 @@ static int		ps_next_swap(t_stack *stack)
 	return ((pos_swap < size_mid_stack) ? 1 : -1);
 }
 
+static int		ps_next_swap_b(t_stack *stack)
+{
+	int size_mid_stack;
+	int pos_swap;
+
+	size_mid_stack = (ps_stack_size(stack) / 2);
+
+	pos_swap = 0;
+	while (stack->down)
+	{
+		if (stack->down->nbr > stack->nbr)
+			break ;
+		++pos_swap;
+		stack = stack->down;
+	}
+	return ((pos_swap < size_mid_stack) ? 1 : -1);
+}
+
+
 static void ps_sort_bubble(int *arr, int size)
 {
 	int state;
@@ -239,7 +258,7 @@ if (!env->stack_b)
 			env->stack_b->down->nbr > env->stack_b->nbr)
 		{
 			ps_operator_sb(env,1);
-			state = ps_next_swap(env->stack_b);
+			state = ps_next_swap_b(env->stack_b);
 		}
 		state == 1 ? ps_operator_rb(env, 1) : ps_operator_rrb(env, 1);
 	}
