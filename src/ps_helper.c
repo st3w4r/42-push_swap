@@ -40,12 +40,20 @@ int		ps_cmp_int(int nb1, int nb2)
 	return (0);
 }
 
-int		ps_stack_is_sorted(t_stack *stack)
+int		ps_stack_is_sorted(t_stack *stack, int reverse)
 {
 	while (stack->down)
 	{
-		if ((stack->nbr) > (stack->down->nbr))
-			return (0);
+		if (reverse)
+		{
+			if ((stack->nbr) < (stack->down->nbr))
+				return (0);
+		}
+		else
+		{
+			if ((stack->nbr) > (stack->down->nbr))
+				return (0);
+		}
 		stack = stack->down;
 	}
 	return (1);

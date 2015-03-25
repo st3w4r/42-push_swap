@@ -106,7 +106,7 @@ void		ps_algo_sort(t_env *env);
 void		ps_print_stack(t_stack *stack);
 void		ps_print_operation(t_env *env, char *str);
 int			ps_cmp_int(int nb1, int nb2);
-int			ps_stack_is_sorted(t_stack *stack);
+int			ps_stack_is_sorted(t_stack *stack, int reverse);
 
 /*
 ** Name: ps_stack

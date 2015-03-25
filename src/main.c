@@ -99,11 +99,11 @@ int			main(int argc, char **argv)
 ft_putendl("");
 ft_putendl("Stack a");
 		ps_print_stack(env.stack_a);
-// ft_putendl("Stack b");
-		// ps_print_stack(env.stack_b);
+ft_putendl("Stack b");
+		ps_print_stack(env.stack_b);
 //
 		ft_putendl("Is Sorted");
-		ft_putnbr(ps_stack_is_sorted(env.stack_a));
+		ft_putnbr(ps_stack_is_sorted(env.stack_a, 0));
 		ft_putendl("");
 
 		ft_putendl("Nombre d'ops");
