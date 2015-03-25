@@ -81,34 +81,127 @@ static int		ps_next_swap(t_stack *stack)
 	return ((pos_swap < size_mid_stack) ? 1 : -1);
 }
 
-static void	ps_push_nb(t_env *env, int nb_push, char name_stack)
+static void ps_sort_bubble(int *arr, int size)
+{
+	int state;
+	int i;
+	int j;
+	int tmp;
+
+	i = size - 1;
+	state = 1;
+	while (i > 0 && state)
+	{
+		state = 0;
+		j = 0;
+		while (j < i)
+		{
+			if (arr[j] >= arr[j + 1])
+			{
+				tmp = arr[j];
+				arr[j] = arr[j +1];
+				arr[j + 1] = tmp;
+				state = 1;
+			}
+			++j;
+		}
+		--i;
+	}
+}
+
+static int ps_stack_mid(t_stack *stack)
+{
+	int *arr;
+	int size;
+	int i;
+	int res;
+
+	size = ps_stack_size(stack);
+	if (!(arr = (int*)malloc(sizeof(int) * size)))
+		ft_malloc_error();
+	i = 0;
+	while (i < size)
+	{
+		arr[i] = stack->nbr;
+		stack = stack->down;
+		++i;
+	}
+	ps_sort_bubble(arr, size);
+	i = 0;
+	while (i < size / 2)
+		++i;
+	res = arr[i];
+	free(arr);
+	return (res);
+}
+/*
+static void	ps_push_nb(t_env *env, int nb_push, char name_stack, int mid)
+{
+	int i;
+
+	i = 0;
+
+	// ft_putnbr(mid);
+	while (i < nb_push)
+	{
+		// ft_putnbr(i);
+
+		if (name_stack == 'a')
+		{
+			// if (ps_stack_peek(&(env->stack_b))->nbr > mid)
+				ps_operator_pa(env, 1);
+		}
+		else if (name_stack == 'b')
+		{
+			ft_putnbr(env->stack_a->nbr);
+			if (env->stack_a->nbr < mid)
+			{
+
+				ft_putendl("In");
+				ps_operator_pb(env, 1);
+
+			}else
+				ft_putendl("Outr");
+
+		}
+		++i;
+	}
+}
+*/
+static void	ps_push_nb(t_env *env, int nb_push, int mid)
 {
 	int i;
 
 	i = 0;
 	while (i < nb_push)
 	{
-		if (name_stack == 'a')
-			ps_operator_pa(env, 1);
-		else if (name_stack == 'b')
-			ps_operator_pb(env, 1);
+			if (ps_stack_peek(&(env->stack_a))->nbr < mid)
+				ps_operator_pb(env, 1);
+			ps_operator_rra(env, 1);
 		++i;
 	}
 }
+
 
 void	ps_algo_sort(t_env *env)
 {
 	int min;
 	int max;
+	int mid;
 	int state;
-	int size_mid_stack;
+	int size;
+	// int size_mid_stack;
+
 
 	if (ps_stack_empty(&(env->stack_a)) == 0)
 		return ;
 
-	size_mid_stack = (ps_stack_size(env->stack_a) / 2);
+	// size_mid_stack = (ps_stack_size(env->stack_a) / 2);
+	size = ps_stack_size(env->stack_a);
 
-	ps_push_nb(env, size_mid_stack, 'b');
+	mid = ps_stack_mid(env->stack_a);
+
+	ps_push_nb(env, size, mid);
 	// ps_push_nb(env, size_mid_stack, 'a');
 
 	min = ps_min_stack(env->stack_a);
@@ -151,5 +244,7 @@ if (!env->stack_b)
 		state == 1 ? ps_operator_rb(env, 1) : ps_operator_rrb(env, 1);
 	}
 
-	ps_push_nb(env, size_mid_stack, 'a');
+	while (ps_stack_empty(&(env->stack_b)))
+		ps_operator_pa(env, 1);
+	// ps_push_nb(env, size, 'a', mid);
 }

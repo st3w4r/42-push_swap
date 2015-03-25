@@ -17,7 +17,7 @@ void	ps_print_stack(t_stack *stack)
 	while (stack)
 	{
 		ft_putnbr(stack->nbr);
-		ft_putendl("");
+		ft_putstr(" ");
 		stack = stack->down;
 	}
 }
