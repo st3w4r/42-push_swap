@@ -40,7 +40,8 @@ static int		ps_max_stack(t_stack *stack)
 	return (max);
 }
 
-int		ps_ra_rra(t_stack *stack)
+/*
+static int		ps_next_swap(t_stack *stack)
 {
 	int size_mid_stack;
 	int count_rotate;
@@ -55,11 +56,29 @@ int		ps_ra_rra(t_stack *stack)
 		stack = stack->down;
 	}
 
-	// ft_putnbr(count_rotate);
+	ft_putnbr(count_rotate);
 	if (count_rotate < size_mid_stack)
 		return (-1); //RRA
 	else
 		return (1); //RA
+}*/
+
+static int		ps_next_swap(t_stack *stack)
+{
+	int size_mid_stack;
+	int pos_swap;
+
+	size_mid_stack = (ps_stack_size(stack) / 2);
+
+	pos_swap = 0;
+	while (stack->down)
+	{
+		if (stack->down->nbr < stack->nbr)
+			break ;
+		++pos_swap;
+		stack = stack->down;
+	}
+	return ((pos_swap < size_mid_stack) ? 1 : -1);
 }
 
 void	ps_algo_sort(t_env *env)
@@ -67,29 +86,27 @@ void	ps_algo_sort(t_env *env)
 	// int max;
 	int min;
 	int state;
+	// int i;
 
 	if (ps_stack_empty(&(env->stack_a)) == 0)
 		return ;
 	min = ps_min_stack(env->stack_a);
+
+	state = ps_next_swap(env->stack_a);
+
 	while (ps_stack_is_sorted(env->stack_a) == 0)
 	{
 		if (!env->stack_a->down)
 			return ;
 
+
 		if (env->stack_a->down->nbr != min &&
 			env->stack_a->down->nbr < env->stack_a->nbr)
 		{
 			ps_operator_sa(env,1);
-			state = ps_ra_rra(env->stack_a);
+			state = ps_next_swap(env->stack_a);
 		}
 
-		if (state)
-		{
-			ps_ra_rra(env->stack_a);
-			ps_ra_rra(env->stack_a);
-		}
-
-		ps_operator_ra(env, 1);
-		ps_operator_rra(env, 1);
+		state == 1 ? ps_operator_ra(env, 1) : ps_operator_rra(env, 1);
 	}
 }
