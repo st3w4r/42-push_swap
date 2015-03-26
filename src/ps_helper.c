@@ -24,11 +24,24 @@ void	ps_print_stack(t_stack *stack)
 
 void	ps_print_operation(t_env *env, char *str)
 {
-	if (!(env->flags & FLAGS_M))
+	if (!(env->flags & FLAGS_M) && !(env->flags & FLAGS_V))
 	{
 		if (env->nb_ops != 0)
 			ft_putstr(" ");
 		ft_putstr(str);
+	}
+	if (env->flags & FLAGS_V)
+	{
+		if (!(env->flags & FLAGS_M))
+			ft_putstr("\033[1;37m"), ft_putstr(str), ft_putstr("\033[0m\n");
+		ft_putendl("Stack a");
+		ft_putstr("\033[1;31m");
+		ps_print_stack(env->stack_a);
+		ft_putstr("\033[0m");
+		ft_putendl("\nStack b");
+		ft_putstr("\033[1;33m");
+		ps_print_stack(env->stack_b);
+		ft_putstr("\033[0m\n\n");
 	}
 	env->nb_ops += 1;
 }

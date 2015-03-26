@@ -14,7 +14,7 @@
 
 static void	ps_error_usage(void)
 {
-	ft_error_str_exit("usage: push_swap [-cvm] [int_value ...]\n");
+	ft_error_str_exit("usage: push_swap [-cvmn] [int_value ...]\n");
 }
 
 static void	ps_parse_flags_one_arg(t_env *env, char *str)
@@ -25,6 +25,8 @@ static void	ps_parse_flags_one_arg(t_env *env, char *str)
 		env->flags |= FLAGS_V;
 	if (ft_strchr(str, 'm') != NULL)
 		env->flags |= FLAGS_M;
+	if (ft_strchr(str, 'n') != NULL)
+		env->flags |= FLAGS_N;
 }
 
 static int	ps_parse_flags(t_env *env, int nb_args, char **args)
@@ -34,7 +36,6 @@ static int	ps_parse_flags(t_env *env, int nb_args, char **args)
 	i = 1;
 	while (i < nb_args && ft_strncmp("-", args[i], 1) == 0)
 	{
-
 		if (args[i][1] && ft_isdigit(args[i][1]) == 1)
 			break ;
 		ps_parse_flags_one_arg(env, args[i]);
@@ -56,61 +57,14 @@ int			main(int argc, char **argv)
 		env.nb_ops = 0;
 		env.stack_a = NULL;
 		env.stack_b = NULL;
-
 		pos_args = ps_parse_flags(&env, argc, argv);
-
-		if (env.flags & FLAGS_V)
-			ft_putendl("Flag -v Active");
-		if (env.flags & FLAGS_C)
-			ft_putendl("Flag -c Active");
 		if (env.flags & FLAGS_M)
 			print = 0;
-
 		ps_parse(&env, argc - pos_args, &(argv[pos_args]));
-
-
-		ft_putendl("Stack a");
-				ps_print_stack(env.stack_a);
-
 		ps_algo_sort(&env);
-
-// 		ft_putendl("Is Sorted");
-// 		ft_putnbr(ps_stack_is_sorted(env.stack_a));
-// 		ft_putendl("");
-//
-// ft_putendl("Stack a");
-// 		ps_print_stack(env.stack_a);
-// ft_putendl("Stack b");
-// 		ps_print_stack(env.stack_b);
-//
-// ft_putendl("");
-//
-//
-//
-// ps_operator_sa(&env, print);
-// ps_operator_pb(&env, print);
-// ps_operator_pb(&env, print);
-// ps_operator_pb(&env, print);
-// ps_operator_sa(&env, print);
-// ps_operator_pa(&env, print);
-// ps_operator_pa(&env, print);
-// ps_operator_pa(&env, print);
-//
-ft_putendl("");
-ft_putendl("Stack a");
-		ps_print_stack(env.stack_a);
-ft_putendl("Stack b");
-		ps_print_stack(env.stack_b);
-//
-		ft_putendl("Is Sorted");
-		ft_putnbr(ps_stack_is_sorted(env.stack_a, 0));
-		ft_putendl("");
-
-		ft_putendl("Nombre d'ops");
-		ft_putnbr(env.nb_ops);
-		ft_putendl("");
-
-
+		if (env.flags & FLAGS_N)
+			ft_putendl("Number of operations"), ft_putnbr(env.nb_ops);
+		ft_putstr("\n");
 	}
 	else
 		ps_error_usage();

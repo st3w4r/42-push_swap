@@ -209,23 +209,14 @@ void	ps_algo_sort(t_env *env)
 	int mid;
 	int state;
 	int size;
-	// int size_mid_stack;
-
 
 	if (ps_stack_empty(&(env->stack_a)) == 0)
 		return ;
 
-	// size_mid_stack = (ps_stack_size(env->stack_a) / 2);
 	size = ps_stack_size(env->stack_a);
-
 	mid = ps_stack_mid(env->stack_a);
-
 	ps_push_nb(env, size, mid);
-	// ps_push_nb(env, size_mid_stack, 'a');
-
 	min = ps_min_stack(env->stack_a);
-	// max = ps_max_stack(env->stack_b);
-
 	state = ps_next_swap(env->stack_a);
 
 
