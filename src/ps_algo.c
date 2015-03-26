@@ -40,29 +40,6 @@ static int		ps_max_stack(t_stack *stack)
 	return (max);
 }
 
-/*
-static int		ps_next_swap(t_stack *stack)
-{
-	int size_mid_stack;
-	int count_rotate;
-
-	size_mid_stack = (ps_stack_size(stack) / 2);
-
-	count_rotate = 0;
-	while (stack->down)
-	{
-		if (stack->down->nbr > stack->nbr)
-			++count_rotate;
-		stack = stack->down;
-	}
-
-	ft_putnbr(count_rotate);
-	if (count_rotate < size_mid_stack)
-		return (-1); //RRA
-	else
-		return (1); //RA
-}*/
-
 static int		ps_next_swap(t_stack *stack)
 {
 	int size_mid_stack;
@@ -153,40 +130,7 @@ static int ps_stack_mid(t_stack *stack)
 	free(arr);
 	return (res);
 }
-/*
-static void	ps_push_nb(t_env *env, int nb_push, char name_stack, int mid)
-{
-	int i;
 
-	i = 0;
-
-	// ft_putnbr(mid);
-	while (i < nb_push)
-	{
-		// ft_putnbr(i);
-
-		if (name_stack == 'a')
-		{
-			// if (ps_stack_peek(&(env->stack_b))->nbr > mid)
-				ps_operator_pa(env, 1);
-		}
-		else if (name_stack == 'b')
-		{
-			ft_putnbr(env->stack_a->nbr);
-			if (env->stack_a->nbr < mid)
-			{
-
-				ft_putendl("In");
-				ps_operator_pb(env, 1);
-
-			}else
-				ft_putendl("Outr");
-
-		}
-		++i;
-	}
-}
-*/
 static void	ps_push_nb(t_env *env, int nb_push, int mid)
 {
 	int i;
@@ -201,6 +145,17 @@ static void	ps_push_nb(t_env *env, int nb_push, int mid)
 	}
 }
 
+static int 	ps_algo_optimize(t_env *env)
+{
+	int optimized;
+	int size;
+
+	optimized = 0;
+	size = ps_stack_size(env->stack_a);
+	if (ps_stack_is_sorted(env->stack_a, 0) == 1)
+		return (1);
+	return (optimized);
+}
 
 void	ps_algo_sort(t_env *env)
 {
@@ -215,15 +170,30 @@ void	ps_algo_sort(t_env *env)
 
 	size = ps_stack_size(env->stack_a);
 	mid = ps_stack_mid(env->stack_a);
-	ps_push_nb(env, size, mid);
+
+	if (ps_algo_optimize(env) == 1)
+		return ;
+
+
+	if (size > 3)
+		ps_push_nb(env, size, mid);
+	/*
+	else
+		if (env->stack_a->down->nbr == min)
+			ps_operator_sa(env,1);
+*/
 	min = ps_min_stack(env->stack_a);
 	state = ps_next_swap(env->stack_a);
-
 
 	while (ps_stack_is_sorted(env->stack_a, 0) == 0)
 	{
 		if (!env->stack_a->down)
 			return ;
+
+		// if (env->stack_a->down->nbr == min)
+			// ps_operator_sa(env,1);
+		// if (ps_stack_is_sorted(env->stack_a, 0) != 0)
+		// 	break ;
 
 		if (env->stack_a->down->nbr != min &&
 			env->stack_a->down->nbr < env->stack_a->nbr)

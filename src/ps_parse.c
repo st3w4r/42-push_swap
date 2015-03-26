@@ -38,7 +38,7 @@ static long		ps_atol_nbr(const char *str)
 				result *= 10;
 		}
 		if (*str && ft_isdigit(*str) == 0)
-			ft_error_str_exit("Error: It is not number.\n");
+			ft_error_str_exit("Error\n");
 	}
 	return (negatif ? -result : result);
 }
@@ -76,10 +76,10 @@ void			ps_parse(t_env *env, int nb_args, char **args)
 	{
 		nbr_parse = ps_atol_nbr(args[nb_args]);
 		if (nbr_parse > 2147483647 || nbr_parse < -2147483648)
-			ft_error_str_exit("Error: Just Integer value supported.\n");
+			ft_error_str_exit("Error\n");
 
 		if (ps_parse_check_number_duplicate(env->stack_a, (int)nbr_parse) == 1)
-			ft_error_str_exit("Error: Duplicate value.\n");
+			ft_error_str_exit("Error\n");
 
 		ps_parse_add_to_stack(env, (int)nbr_parse);
 
