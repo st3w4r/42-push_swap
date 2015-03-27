@@ -150,12 +150,67 @@ static void ps_push_reverse(t_env *env)
 	while (ps_stack_empty(&(env->stack_a)))
 	{
 		ps_operator_pb(env, 1);
-		ps_operator_rrb(env, 1);
+		ps_operator_rb(env, 1);
 	}
 	while (ps_stack_empty(&(env->stack_b)))
 	{
 		ps_operator_pa(env, 1);
 	}
+}
+
+static int ps_swap_first(t_env *env)
+{
+	if (env->stack_a->nbr > env->stack_a->down->nbr)
+		return (1);
+	return (0);
+}
+
+static int ps_swap_end(t_stack *stack)
+{
+	while (stack->down->down)
+	{
+		stack = stack->down;
+	}
+	if (stack->nbr > stack->down->nbr)
+		return (1);
+	return (0);
+}
+/*
+static int ps_just_rotate(t_stack *stack)
+{
+	int min;
+	int max;
+
+	min = ps_min_stack(stack);
+	max = ps_min_stack(stack);
+
+	while (stack)
+	{
+		if (stack->nbr == max && stack->down->nbr == min)
+			return (1);
+		stack = stack->down;
+	}
+	return (0);
+}
+*/
+
+static void	ps_algo_optimize_three(t_env *env)
+{
+	if (env->stack_a->nbr == ps_min_stack(env->stack_a) &&
+		env->stack_a->down->nbr == ps_max_stack(env->stack_a))
+		ps_operator_sa(env, 1), ps_operator_ra(env, 1);
+	else if (env->stack_a->nbr == ps_stack_mid(env->stack_a) &&
+			env->stack_a->down->nbr == ps_min_stack(env->stack_a))
+		ps_operator_sa(env, 1);
+	else if (env->stack_a->nbr == ps_stack_mid(env->stack_a) &&
+			env->stack_a->down->nbr == ps_max_stack(env->stack_a))
+		ps_operator_rra(env, 1);
+	else if (env->stack_a->nbr == ps_max_stack(env->stack_a) &&
+			env->stack_a->down->nbr == ps_min_stack(env->stack_a))
+		ps_operator_ra(env, 1);
+	else if (env->stack_a->nbr == ps_max_stack(env->stack_a) &&
+			env->stack_a->down->nbr == ps_stack_mid(env->stack_a))
+		ps_operator_sa(env, 1), ps_operator_rra(env, 1);
 }
 
 static int 	ps_algo_optimize(t_env *env)
@@ -167,15 +222,36 @@ static int 	ps_algo_optimize(t_env *env)
 	size = ps_stack_size(env->stack_a);
 	if (ps_stack_is_sorted(env->stack_a, 0) == 1)
 		return (1);
-	/*if (ps_swap_first(env->stack_a))
+	if (size == 3)
 	{
-
-	}*/
+		ps_algo_optimize_three(env);
+		return (1);
+	}
 	if (ps_stack_is_sorted(env->stack_a, 1) == 1)
 	{
 		ps_push_reverse(env);
 		return (1);
 	}
+	if (ps_swap_first(env))
+	{
+		ps_operator_sa(env, 1);
+		return (1);
+	}
+	if (ps_swap_end(env->stack_a))
+	{
+			ps_operator_rra(env, 1);
+			ps_operator_rra(env, 1);
+			ps_operator_sa(env, 1);
+			ps_operator_ra(env, 1);
+			ps_operator_ra(env, 1);
+		return (1);
+	}
+/*
+	if (ps_just_rotate(env->stack_a))
+	{
+		while
+	}*/
+
 	return (optimized);
 }
 
@@ -197,7 +273,7 @@ void	ps_algo_sort(t_env *env)
 		return ;
 
 
-	if (size > 5)
+	if (ps_stack_is_sorted(env->stack_a, 0) == 0 && size > 5)
 		ps_push_nb(env, size, mid);
 	/*
 	else
