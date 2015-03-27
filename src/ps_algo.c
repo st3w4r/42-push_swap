@@ -145,6 +145,19 @@ static void	ps_push_nb(t_env *env, int nb_push, int mid)
 	}
 }
 
+static void ps_push_reverse(t_env *env)
+{
+	while (ps_stack_empty(&(env->stack_a)))
+	{
+		ps_operator_pb(env, 1);
+		ps_operator_rrb(env, 1);
+	}
+	while (ps_stack_empty(&(env->stack_b)))
+	{
+		ps_operator_pa(env, 1);
+	}
+}
+
 static int 	ps_algo_optimize(t_env *env)
 {
 	int optimized;
@@ -154,6 +167,15 @@ static int 	ps_algo_optimize(t_env *env)
 	size = ps_stack_size(env->stack_a);
 	if (ps_stack_is_sorted(env->stack_a, 0) == 1)
 		return (1);
+	/*if (ps_swap_first(env->stack_a))
+	{
+
+	}*/
+	if (ps_stack_is_sorted(env->stack_a, 1) == 1)
+	{
+		ps_push_reverse(env);
+		return (1);
+	}
 	return (optimized);
 }
 
@@ -175,7 +197,7 @@ void	ps_algo_sort(t_env *env)
 		return ;
 
 
-	if (size > 3)
+	if (size > 5)
 		ps_push_nb(env, size, mid);
 	/*
 	else
