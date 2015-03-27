@@ -61,11 +61,8 @@ int			main(int argc, char **argv)
 		if (env.flags & FLAGS_M)
 			print = 0;
 		ps_parse(&env, argc - pos_args, &(argv[pos_args]));
-	ps_print_stack(env.stack_a);
-		ps_algo_sort(&env);
-
-		ft_putendl("\nIs Sorted"), ft_putnbr(ps_stack_is_sorted(env.stack_a, 0));
-
+		if (ps_stack_empty(&(env.stack_a)) != 0)
+			ps_algo_sort(&env, 0);
 		if (env.flags & FLAGS_N)
 			ft_putendl("\nNumber of operations"), ft_putnbr(env.nb_ops);
 		ft_putstr("\n");
