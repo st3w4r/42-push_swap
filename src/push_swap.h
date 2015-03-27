@@ -130,7 +130,6 @@ int					ps_next_swap_b(t_stack *stack);
 int					ps_stack_empty(t_stack **stack);
 void				ps_print_stack(t_stack *stack);
 void				ps_print_operation(t_env *env, char *str);
-int					ps_cmp_int(int nb1, int nb2);
 int					ps_stack_is_sorted(t_stack *stack, int reverse);
 
 /*
