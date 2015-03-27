@@ -108,7 +108,6 @@ void				ps_algo_sort(t_env *env, int state, int size);
 */
 void				ps_push_reverse(t_env *env);
 int					ps_swap_end(t_stack *stack);
-void				ps_algo_optimize_three(t_env *env);
 int					ps_algo_optimize(t_env *env);
 
 /*
@@ -121,6 +120,14 @@ int					ps_max_stack(t_stack *stack);
 int					ps_stack_mid(t_stack *stack);
 int					ps_next_swap(t_stack *stack);
 int					ps_next_swap_b(t_stack *stack);
+
+/*
+** Name: ps_algo_4
+** File: ps_algo_4.c
+** Desc: Algortihme to sort stack
+*/
+void				ps_algo_optimize_three(t_env *env);
+void				ps_algo_optimize_five(t_env *env, int size);
 
 /*
 ** Name: ps_helper

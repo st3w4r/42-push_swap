@@ -45,25 +45,6 @@ int			ps_swap_end(t_stack *stack)
 	return (0);
 }
 
-void		ps_algo_optimize_three(t_env *env)
-{
-	if (env->stack_a->nbr == ps_min_stack(env->stack_a) &&
-		env->stack_a->down->nbr == ps_max_stack(env->stack_a))
-		ps_operator_sa(env, 1), ps_operator_ra(env, 1);
-	else if (env->stack_a->nbr == ps_stack_mid(env->stack_a) &&
-			env->stack_a->down->nbr == ps_min_stack(env->stack_a))
-		ps_operator_sa(env, 1);
-	else if (env->stack_a->nbr == ps_stack_mid(env->stack_a) &&
-			env->stack_a->down->nbr == ps_max_stack(env->stack_a))
-		ps_operator_rra(env, 1);
-	else if (env->stack_a->nbr == ps_max_stack(env->stack_a) &&
-			env->stack_a->down->nbr == ps_min_stack(env->stack_a))
-		ps_operator_ra(env, 1);
-	else if (env->stack_a->nbr == ps_max_stack(env->stack_a) &&
-			env->stack_a->down->nbr == ps_stack_mid(env->stack_a))
-		ps_operator_sa(env, 1), ps_operator_rra(env, 1);
-}
-
 int			ps_algo_optimize(t_env *env)
 {
 	int optimized;
@@ -78,6 +59,8 @@ int			ps_algo_optimize(t_env *env)
 		ps_algo_optimize_three(env);
 		return (1);
 	}
+	if (size == 5)
+		ps_algo_optimize_five(env, size);
 	if (ps_stack_is_sorted(env->stack_a, 1) == 1)
 	{
 		ps_push_reverse(env);
