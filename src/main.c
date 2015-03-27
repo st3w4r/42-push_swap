@@ -62,7 +62,7 @@ int			main(int argc, char **argv)
 			print = 0;
 		ps_parse(&env, argc - pos_args, &(argv[pos_args]));
 		if (ps_stack_empty(&(env.stack_a)) != 0)
-			ps_algo_sort(&env, 0);
+			ps_algo_sort(&env, 0, 0);
 		if (env.flags & FLAGS_N)
 			ft_putendl("\nNumber of operations"), ft_putnbr(env.nb_ops);
 		ft_putstr("\n");

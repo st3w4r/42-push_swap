@@ -12,13 +12,8 @@
 
 #include "push_swap.h"
 
-static long		ps_atol_nbr(const char *str)
+static long		ps_atol_nbr(const char *str, long result, long negatif)
 {
-	long result;
-	long negatif;
-
-	result = 0;
-	negatif = 0;
 	if (str)
 	{
 		while (*str == ' ' || *str == '\t' || *str == '\n' || *str == '\r'
@@ -56,7 +51,6 @@ static int		ps_parse_check_number_duplicate(t_stack *stack, int nbr)
 	return (0);
 }
 
-
 static void		ps_parse_add_to_stack(t_env *env, int nbr)
 {
 	t_stack *elem;
@@ -74,36 +68,12 @@ void			ps_parse(t_env *env, int nb_args, char **args)
 	nb_args -= 1;
 	while (nb_args >= 0)
 	{
-		nbr_parse = ps_atol_nbr(args[nb_args]);
+		nbr_parse = ps_atol_nbr(args[nb_args], 0, 0);
 		if (nbr_parse > 2147483647 || nbr_parse < -2147483648)
 			ft_error_str_exit("Error\n");
-
 		if (ps_parse_check_number_duplicate(env->stack_a, (int)nbr_parse) == 1)
 			ft_error_str_exit("Error\n");
-
 		ps_parse_add_to_stack(env, (int)nbr_parse);
-
 		--nb_args;
 	}
-
-	// ps_operator_sa(env);
-/*
-	ps_parse_add_to_stack(env, 41);
-	ps_stack_pop(&(env->stack_a));
-	ps_parse_add_to_stack(env, 42);
-	ps_stack_pop(&(env->stack_a));
-	ps_parse_add_to_stack(env, 43);
-	ps_stack_pop(&(env->stack_a));
-	ps_parse_add_to_stack(env, 44);
-	ps_stack_pop(&(env->stack_a));
-
-	ps_stack_swap_top(&(env->stack_a));
-	ft_putnbr(ps_stack_peek(&(env->stack_a))->nbr);
-	ft_putendl("<<");
-*/
-	// ft_putnbr(ps_stack_empty(NULL));
-	// ft_putendl("<<");
-
-		// ps_print_stack(env->stack_a);
-		// ft_putendl("");
 }

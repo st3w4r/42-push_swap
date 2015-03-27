@@ -12,6 +12,13 @@
 
 #include "push_swap.h"
 
+int		ps_stack_empty(t_stack **stack)
+{
+	if (stack && *stack)
+		return (1);
+	return (0);
+}
+
 void	ps_print_stack(t_stack *stack)
 {
 	while (stack)

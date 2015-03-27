@@ -28,7 +28,6 @@ void	ps_operator_rra(t_env *env, int is_print)
 	elem_tmp_2->down = NULL;
 	if (is_print)
 		ps_print_operation(env, "rra");
-
 }
 
 void	ps_operator_rrb(t_env *env, int is_print)

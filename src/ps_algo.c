@@ -77,11 +77,10 @@ static void		ps_algo_sort_b(t_env *env)
 		ps_operator_pa(env, 1);
 }
 
-void			ps_algo_sort(t_env *env, int state)
+void			ps_algo_sort(t_env *env, int state, int size)
 {
 	int min;
 	int mid;
-	int size;
 
 	size = ps_stack_size(env->stack_a);
 	mid = ps_stack_mid(env->stack_a);

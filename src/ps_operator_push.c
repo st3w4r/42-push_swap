@@ -36,5 +36,4 @@ void	ps_operator_pb(t_env *env, int is_print)
 	ps_stack_push(&(env->stack_b), elem);
 	if (is_print)
 		ps_print_operation(env, "pb");
-
 }

@@ -31,13 +31,6 @@ t_stack	*ps_stack_pop(t_stack **stack)
 	return (elem);
 }
 
-int		ps_stack_empty(t_stack **stack)
-{
-	if (stack && *stack)
-		return (1);
-	return (0);
-}
-
 int		ps_stack_size(t_stack *stack)
 {
 	int count;

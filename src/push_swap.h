@@ -99,7 +99,7 @@ void				ps_operator_rrr(t_env *env, int is_print);
 */
 void				ps_sort_bubble(int *arr, int size);
 void				ps_push_nb(t_env *env, int nb_push, int mid);
-void				ps_algo_sort(t_env *env, int state);
+void				ps_algo_sort(t_env *env, int state, int size);
 
 /*
 ** Name: ps_algo_2
@@ -127,6 +127,7 @@ int					ps_next_swap_b(t_stack *stack);
 ** File: ps_helper.c
 ** Desc: Functions simply program
 */
+int					ps_stack_empty(t_stack **stack);
 void				ps_print_stack(t_stack *stack);
 void				ps_print_operation(t_env *env, char *str);
 int					ps_cmp_int(int nb1, int nb2);
@@ -139,7 +140,6 @@ int					ps_stack_is_sorted(t_stack *stack, int reverse);
 */
 void				ps_stack_push(t_stack **stack, t_stack *elem);
 t_stack				*ps_stack_pop(t_stack **stack);
-int					ps_stack_empty(t_stack **stack);
 int					ps_stack_size(t_stack *stack);
 t_stack				*ps_stack_peek(t_stack **stack);
 void				ps_stack_swap_top(t_stack **stack);
