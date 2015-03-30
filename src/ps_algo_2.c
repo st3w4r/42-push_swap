@@ -54,11 +54,10 @@ int			ps_algo_optimize(t_env *env)
 	size = ps_stack_size(env->stack_a);
 	if (ps_stack_is_sorted(env->stack_a, 0) == 1)
 		return (1);
+	if (size == 2)
+		ps_operator_sa(env, 1), optimized = 1;
 	if (size == 3)
-	{
-		ps_algo_optimize_three(env);
-		return (1);
-	}
+		ps_algo_optimize_three(env), optimized = 1;
 	if (size == 5)
 		ps_algo_optimize_five(env, size);
 	if (ps_stack_is_sorted(env->stack_a, 1) == 1)

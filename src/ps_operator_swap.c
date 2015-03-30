@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	ps_operator_sa(t_env *env, int is_print)
+void		ps_operator_sa(t_env *env, int is_print)
 {
 	if (!env || !(env->stack_a) || !(env->stack_a->down))
 		return ;
@@ -21,7 +21,7 @@ void	ps_operator_sa(t_env *env, int is_print)
 		ps_print_operation(env, "sa");
 }
 
-void	ps_operator_sb(t_env *env, int is_print)
+void		ps_operator_sb(t_env *env, int is_print)
 {
 	if (!env || !(env->stack_b) || !(env->stack_b->down))
 		return ;
@@ -30,7 +30,7 @@ void	ps_operator_sb(t_env *env, int is_print)
 		ps_print_operation(env, "sb");
 }
 
-void	ps_operator_ss(t_env *env, int is_print)
+void		ps_operator_ss(t_env *env, int is_print)
 {
 	if (!env || !(env->stack_a) || !(env->stack_b))
 		return ;
