@@ -16,8 +16,8 @@ PATH_OBJ = ./
 PATH_INC = ./libft/includes/
 
 CC = cc
-# CFLAGS = -Wall -Wextra -Werror -Wpadded -Ofast -I $(PATH_INC)
-CFLAGS = -Ofast -I $(PATH_INC) -g
+CFLAGS = -Wall -Wextra -Werror -Ofast -I $(PATH_INC)
+# CFLAGS = -Ofast -I $(PATH_INC) -g
 LIBS = -L libft/ -lft
 
 HEAD = $(PATH_SRC)push_swap.h

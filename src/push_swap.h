@@ -30,8 +30,8 @@ enum	e_flags
 
 typedef struct		s_stack
 {
-	int				nbr;
 	struct s_stack	*down;
+	int				nbr;
 }					t_stack;
 
 typedef struct		s_env
