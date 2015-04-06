@@ -25,7 +25,9 @@ enum	e_flags
 	FLAGS_V = 1 << 0,
 	FLAGS_C = 1 << 1,
 	FLAGS_M = 1 << 2,
-	FLAGS_N = 1 << 3
+	FLAGS_N = 1 << 3,
+	FLAGS_F = 1 << 4,
+	FLAGS_S = 1 << 5
 };
 
 typedef struct		s_stack
