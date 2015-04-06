@@ -71,7 +71,7 @@ void	ps_print_operation(t_env *env, char *str)
 
 int		ps_stack_is_sorted(t_stack *stack, int reverse)
 {
-	while (stack->down)
+	while (stack && stack->down)
 	{
 		if (reverse)
 		{
